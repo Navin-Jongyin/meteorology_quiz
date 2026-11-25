@@ -127,6 +127,29 @@
   .modal .body p{margin:0 0 16px;line-height:1.5}
   .modal .btns{display:flex;justify-content:flex-end;gap:10px}
 
+  /* Bank tabs */
+  .tabs{display:flex;border-bottom:1px solid var(--line);background:#f5f7fa}
+  .tabs button{flex:1;border:0;border-bottom:3px solid transparent;background:none;padding:12px 10px;font-size:14px;color:var(--muted);text-align:center}
+  .tabs button small{display:block;font-size:12px;margin-top:2px}
+  .tabs button:hover{background:#eef2f7}
+  .tabs button.on{color:var(--navy);border-bottom-color:var(--accent);background:#fff;font-weight:600}
+  .tabs button:disabled{opacity:.5;cursor:default}
+  .warn{border-left-color:var(--flag);background:#fff8e1}
+
+  /* Fill-in answers */
+  .fill{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .fill input{flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:3px;font:inherit;font-size:16px}
+  .fill input:disabled{background:#f5f7fa;color:var(--text)}
+  .fill.correct input{border-color:var(--ok);background:var(--okbg)}
+  .fill.wrong input{border-color:var(--bad);background:var(--badbg)}
+
+  /* Handwritten working */
+  .working{margin:6px 0 0;padding:10px 14px;background:#fffdf3;border:1px solid #eadfb8;border-radius:3px;font-size:15px;line-height:2.1;color:var(--text);list-style:none}
+  .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-size:.85em;line-height:1.15;margin:0 2px}
+  .frac span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+  .frac span:last-child{padding:0 3px}
+  .working li{padding:0!important;margin:0!important;background:none!important;color:inherit!important;text-decoration:none!important;font-weight:400!important}
+
   @media (max-width:860px){
     .exam{grid-template-columns:1fr;height:auto}
     .side{order:-1}
@@ -154,12 +177,16 @@
 <section class="start" id="startView">
   <div class="card">
     <h1>Examination Setup</h1>
+    <div class="tabs" id="tabs">
+      <button data-bank="met" class="on">050 Question Bank<small id="tabMetN">loading…</small></button>
+      <button data-bank="cal">MET CAL — Altimetry calculations<small id="tabCalN">loading…</small></button>
+    </div>
     <div class="body">
       <p id="loadMsg" style="margin-top:0;color:var(--muted)">Loading question bank…</p>
       <div id="loadFallback" class="hidden rules" style="border-color:var(--bad)">
-        The browser blocked loading <code>meteorology_questions_answers.json</code> directly (this happens when opening the page as a file).
-        Select the file manually, or serve the folder with <code>python3 -m http.server</code>.<br><br>
-        <input type="file" id="filePick" accept=".json,application/json">
+        The browser blocked loading the question files directly (this happens when opening the page as a file).
+        Select <code>meteorology_questions_answers.json</code> and/or <code>MET_CAL_EXAM.json</code> manually, or serve the folder with <code>python3 -m http.server</code>.<br><br>
+        <input type="file" id="filePick" accept=".json,application/json" multiple>
       </div>
 
       <div id="setup" class="hidden">
@@ -175,8 +202,12 @@
           </div>
         </div>
 
+        <div class="rules warn hidden" id="calNote">
+          The CAL answers are the ones marked on the scanned exam paper, not a verified answer key. If you get one "wrong", check the handwritten working shown with it.
+        </div>
         <div class="rules">
           Each question has one correct answer. Wrong answers lose no marks. There is no time limit. Pass mark 75%. You see right away whether each answer is correct, and an answer can't be changed once picked. You can flag questions and come back to them before you submit.
+          Fill-in questions: type the answer and press <b>Enter</b>.
           Keyboard: <b>A–D</b> select · <b>←/→</b> previous/next · <b>F</b> flag
         </div>
 
@@ -218,7 +249,8 @@
       <div class="grid" id="grid"></div>
       <div class="legend">
         <div><i></i>Not answered</div>
-        <div><i style="background:#c9dcf3;border-color:#7fa6d6"></i>Answered</div>
+        <div><i style="background:#cdebd5;border-color:#7cc290"></i>Correct</div>
+        <div><i style="background:#f6cdca;border-color:#e08a84"></i>Incorrect</div>
         <div><i style="border-top:6px solid var(--flag)"></i>Flagged</div>
         <div><i style="outline:2px solid var(--navy)"></i>Current</div>
       </div>
@@ -243,7 +275,7 @@
 <!-- RESULTS -->
 <section class="results hidden" id="resultView">
   <div class="card">
-    <h1>Examination Result — 050 Meteorology</h1>
+    <h1 id="rTitle">Examination Result</h1>
     <div class="score">
       <svg class="ring" viewBox="0 0 120 120">
         <circle cx="60" cy="60" r="52" fill="none" stroke="#e3e9ef" stroke-width="12"/>
@@ -289,60 +321,109 @@
 
 <script>
 (() => {
-  const JSON_FILE = 'meteorology_questions_answers.json';
   const PASS = 75, SAVE_KEY = 'met-cbt-session';
   const $ = id => document.getElementById(id);
   const show = (el, on = true) => el.classList.toggle('hidden', !on);
 
-  let BANK = [];
-  let EXPL = {};         // bank ref -> explanation
-  let IMG = {};          // bank ref -> figure image path
+  /* Each bank: file, display name, and normalised questions:
+     { number, question, kind: 'mc'|'fill', options, correct, correctText, explanation, working[], image } */
+  const BANKS = {
+    met: { file: 'meteorology_questions_answers.json', name: '050 Meteorology', qs: null },
+    cal: { file: 'MET_CAL_EXAM.json', name: 'MET CAL — Altimetry', qs: null }
+  };
+  let current = 'met';
   let S = null;          // current session
   let tick = null;
 
   /* ---------- Loading ---------- */
-  function initBank(data) {
-    BANK = data.filter(q => q && q.question && Array.isArray(q.options) && q.correct_answer);
-    EXPL = Object.fromEntries(BANK.map(q => [q.number, q.explanation || '']));
-    IMG = Object.fromEntries(BANK.filter(q => q.image).map(q => [q.number, q.image]));
-    $('loadMsg').textContent = `Question bank loaded: ${BANK.length} questions.`;
-    show($('loadFallback'), false);
-    show($('setup'));
-    const sl = $('inCount');
-    sl.max = BANK.length;
-    sl.value = Math.min(40, BANK.length);
-    $('countMax').textContent = BANK.length;
-    sl.oninput = () => $('countVal').textContent = +sl.value === BANK.length ? `All (${sl.value})` : sl.value;
-    sl.oninput();
-    checkResume();
+  function normMet(data) {
+    return data.filter(q => q && q.question && Array.isArray(q.options) && q.correct_answer).map(q => ({
+      number: q.number, question: q.question, kind: 'mc', options: q.options,
+      correct: q.correct_answer.option, correctText: q.correct_answer.text,
+      explanation: q.explanation || '', working: null, image: q.image || null
+    }));
   }
-  fetch(JSON_FILE).then(r => { if (!r.ok) throw 0; return r.json(); }).then(initBank).catch(() => {
-    $('loadMsg').textContent = 'Could not load the question bank automatically.';
-    show($('loadFallback'));
+  function normCal(data) {
+    return (data.questions || []).filter(q => q && q.question && q.selected_answer).map(q => {
+      const fill = q.type === 'fill_in' || !Array.isArray(q.options) || !q.options.length;
+      return {
+        number: q.number, question: q.question, kind: fill ? 'fill' : 'mc',
+        options: fill ? [] : q.options,
+        correct: fill ? null : q.selected_answer.label, correctText: q.selected_answer.text,
+        explanation: '', working: Array.isArray(q.explanation) ? q.explanation : null,
+        basedOn: q.explanation_based_on || null,
+        image: q.image || null
+      };
+    });
+  }
+  function setBank(key, data) {
+    BANKS[key].qs = key === 'cal' ? normCal(data) : normMet(data);
+    refreshTabs();
+  }
+  const detect = data => Array.isArray(data) ? 'met' : data && Array.isArray(data.questions) ? 'cal' : null;
+
+  Promise.allSettled(Object.entries(BANKS).map(([k, b]) =>
+    fetch(b.file).then(r => { if (!r.ok) throw 0; return r.json(); }).then(d => setBank(k, d))
+  )).then(() => {
+    const missing = Object.values(BANKS).filter(b => !b.qs);
+    show($('loadFallback'), missing.length > 0);
+    if (missing.length === 2) $('loadMsg').textContent = 'Could not load the question banks automatically.';
+    if (!BANKS[current].qs) current = Object.keys(BANKS).find(k => BANKS[k].qs) || current;
+    refreshTabs();
+    checkResume();
   });
   $('filePick').onchange = e => {
-    const f = e.target.files[0]; if (!f) return;
-    f.text().then(t => initBank(JSON.parse(t))).catch(() => alert('Not a valid JSON file.'));
+    [...e.target.files].forEach(f => f.text().then(t => {
+      const d = JSON.parse(t), k = detect(d);
+      if (!k) throw 0;
+      setBank(k, d); current = k; refreshTabs(); checkResume();
+      show($('loadFallback'), Object.values(BANKS).some(b => !b.qs));
+    }).catch(() => alert(`${f.name} is not a question bank file.`)));
   };
 
-  /* ---------- Setup ---------- */
+  /* ---------- Tabs / setup ---------- */
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+    if (!BANKS[b.dataset.bank].qs) return;
+    current = b.dataset.bank; refreshTabs();
+  });
+
+  function refreshTabs() {
+    document.querySelectorAll('#tabs button').forEach(b => {
+      const bk = BANKS[b.dataset.bank];
+      b.classList.toggle('on', b.dataset.bank === current);
+      b.disabled = !bk.qs;
+      $(b.dataset.bank === 'met' ? 'tabMetN' : 'tabCalN').textContent = bk.qs ? `${bk.qs.length} questions` : 'not loaded';
+    });
+    const qs = BANKS[current].qs;
+    show($('setup'), !!qs);
+    show($('calNote'), current === 'cal');
+    if (!qs) return;
+    $('loadMsg').textContent = `${BANKS[current].name}: ${qs.length} questions loaded.`;
+    const sl = $('inCount');
+    sl.max = qs.length;
+    sl.value = Math.min(current === 'cal' ? qs.length : 40, qs.length);
+    $('countMax').textContent = qs.length;
+    sl.oninput = () => $('countVal').textContent = +sl.value === qs.length ? `All (${sl.value})` : sl.value;
+    sl.oninput();
+  }
+
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-  function buildSession(pool, opts) {
+  function buildSession(bank, pool, opts) {
     let qs = opts.shuffleQ ? shuffle(pool) : pool.slice().sort((a, b) => a.number - b.number);
     qs = qs.slice(0, opts.count);
     const items = qs.map(q => ({
-      ref: q.number,
+      ref: q.number, kind: q.kind,
       question: q.question,
       options: (opts.shuffleO ? shuffle(q.options) : q.options).map(o => ({ label: o.label, text: o.text })),
-      correct: q.correct_answer.option,
-      answer: null, flag: false
+      correct: q.correct, correctText: q.correctText,
+      answer: null, ok: null, flag: false
     }));
-    return { items, idx: 0, mode: 'practice', limit: 0, elapsed: 0, opts, done: false };
+    return { bank, items, idx: 0, mode: 'practice', limit: 0, elapsed: 0, opts, done: false };
   }
 
   $('btnStart').onclick = () => {
-    start(buildSession(BANK, {
+    start(buildSession(current, BANKS[current].qs, {
       count: +$('inCount').value,
       shuffleQ: $('inShuffleQ').checked, shuffleO: $('inShuffleO').checked
     }));
@@ -350,9 +431,11 @@
 
   function checkResume() {
     let s; try { s = JSON.parse(localStorage.getItem(SAVE_KEY)); } catch {}
-    if (!s || s.done) return show($('resumeBox'), false);
+    if (!s || s.done || !Array.isArray(s.items)) return show($('resumeBox'), false);
+    s.bank = s.bank || 'met';
+    if (!BANKS[s.bank] || !BANKS[s.bank].qs) return show($('resumeBox'), false);
     const n = s.items.filter(i => i.answer).length;
-    $('resumeText').textContent = `Unfinished session: ${n}/${s.items.length} answered.`;
+    $('resumeText').textContent = `Unfinished ${BANKS[s.bank].name} session: ${n}/${s.items.length} answered.`;
     show($('resumeBox'));
     $('btnResume').onclick = () => start(s);
     $('btnDiscard').onclick = () => { localStorage.removeItem(SAVE_KEY); show($('resumeBox'), false); };
@@ -360,12 +443,34 @@
 
   const save = () => { try { localStorage.setItem(SAVE_KEY, JSON.stringify(S)); } catch {} };
 
+  /* ---------- Helpers ---------- */
+  const bankQ = it => (BANKS[S.bank].qs || []).find(q => q.number === it.ref) || {};
+  const isOk = it => it.kind === 'fill' ? !!it.ok : it.answer === it.correct;
+
+  // Fill-in grading: compare the numbers and the meaningful words (ignoring units and spacing).
+  const UNITS = new Set(['ft', 'feet', 'hpa', 'mb', 'm', 'by', 'c', '°c', 'kt', 'kts']);
+  function tokens(str) {
+    const t = String(str).toLowerCase().replace(/(\d)[\s,](?=\d{3}\b)/g, '$1');
+    const nums = (t.match(/-?\d+(\.\d+)?/g) || []).map(Number);
+    const words = (t.replace(/-?\d+(\.\d+)?/g, ' ').match(/[a-z°]+/g) || []).filter(w => !UNITS.has(w));
+    return { nums, words };
+  }
+  function fillMatches(given, expected) {
+    const g = tokens(given), e = tokens(expected);
+    if (!g.nums.length && !g.words.length) return false;
+    return g.nums.length === e.nums.length && g.nums.every((n, i) => n === e.nums[i]) &&
+           e.words.every(w => g.words.includes(w));
+  }
+
   /* ---------- Exam ---------- */
   function start(session) {
     S = session;
     S.mode = 'practice';
+    S.bank = S.bank || 'met';
+    S.items.forEach(it => { it.kind = it.kind || 'mc'; });
+    $('rTitle').textContent = `Examination Result — ${BANKS[S.bank].name}`;
     show($('startView'), false); show($('resultView'), false); show($('examView'));
-    show($('stCorrLbl'), S.mode === 'practice'); show($('stCorr'), S.mode === 'practice');
+    show($('stCorrLbl')); show($('stCorr'));
     buildGrid(); render();
     clearInterval(tick);
     show($('timer'));
@@ -400,36 +505,54 @@
   }
 
   function render() {
-    const it = S.items[S.idx], n = S.items.length;
+    const it = S.items[S.idx], n = S.items.length, q = bankQ(it);
     $('qTitle').textContent = `Question ${S.idx + 1} of ${n}`;
     $('qRef').textContent = '#' + it.ref;
     $('qCounter').textContent = `${S.idx + 1} / ${n}`;
     $('qText').textContent = it.question;
     const ib = $('qImg'); ib.innerHTML = '';
-    if (IMG[it.ref]) ib.appendChild(imgEl(it.ref));
-    const reveal = S.mode === 'practice' && it.answer;
+    if (q.image) ib.appendChild(imgEl(q.image));
+    const reveal = !!it.answer;
     const box = $('qOpts'); box.innerHTML = '';
-    it.options.forEach((o, k) => {
-      const b = document.createElement('button');
-      b.className = 'opt';
-      const letter = 'ABCD'[k] || o.label;
-      b.innerHTML = `<span class="lt">${letter}</span><span class="tx"></span>`;
-      b.querySelector('.tx').textContent = o.text;
-      if (reveal) {
-        b.disabled = true;
-        if (o.label === it.correct) b.classList.add('correct');
-        else if (o.label === it.answer) b.classList.add('wrong');
-      } else if (it.answer === o.label) b.classList.add('sel');
-      b.onclick = () => choose(o.label);
-      box.appendChild(b);
-    });
+
+    if (it.kind === 'fill') {
+      const wrap = document.createElement('div'); wrap.className = 'fill';
+      const inp = document.createElement('input');
+      inp.type = 'text'; inp.placeholder = 'Type your answer, e.g. 11 660 ft'; inp.autocomplete = 'off';
+      const btn = document.createElement('button'); btn.className = 'btn primary'; btn.textContent = 'Check';
+      const submit = () => { if (inp.value.trim()) answerFill(inp.value.trim()); };
+      btn.onclick = submit;
+      inp.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); submit(); } };
+      if (reveal) { inp.value = it.answer; inp.disabled = true; btn.disabled = true; wrap.classList.add(it.ok ? 'correct' : 'wrong'); }
+      wrap.append(inp, btn); box.appendChild(wrap);
+      if (!reveal) setTimeout(() => inp.focus(), 0);
+    } else {
+      it.options.forEach((o, k) => {
+        const b = document.createElement('button');
+        b.className = 'opt';
+        b.innerHTML = `<span class="lt">${'ABCD'[k] || o.label}</span><span class="tx"></span>`;
+        b.querySelector('.tx').textContent = o.text;
+        if (reveal) {
+          b.disabled = true;
+          if (o.label === it.correct) b.classList.add('correct');
+          else if (o.label === it.answer) b.classList.add('wrong');
+        }
+        b.onclick = () => choose(o.label);
+        box.appendChild(b);
+      });
+    }
+
     const fb = $('qFeedback');
     if (reveal) {
-      const ok = it.answer === it.correct;
-      const ci = it.options.findIndex(o => o.label === it.correct);
+      const ok = isOk(it);
       fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
-      fb.textContent = ok ? '✓ Correct.' : `✗ Incorrect. The correct answer is ${'ABCD'[ci]}: ${it.options[ci].text}`;
-      if (!ok && EXPL[it.ref]) fb.appendChild(explainEl(it.ref));
+      if (ok) fb.textContent = '✓ Correct.';
+      else if (it.kind === 'fill') fb.textContent = `✗ Incorrect. The answer is ${it.correctText}`;
+      else {
+        const ci = it.options.findIndex(o => o.label === it.correct);
+        fb.textContent = `✗ Incorrect. The correct answer is ${'ABCD'[ci]}: ${it.options[ci].text}`;
+      }
+      if (!ok) { const ex = explainEl(q); if (ex) fb.appendChild(ex); }
     } else { fb.className = ''; fb.textContent = ''; }
 
     $('qStatus').textContent = it.flag ? '⚑ Flagged for review' : '';
@@ -439,18 +562,48 @@
     refreshSide();
   }
 
-  function explainEl(ref) {
+  // Explanation for a wrong answer: the written explanation, or the handwritten working (CAL).
+  function explainEl(q) {
+    const isCal = Array.isArray(q.working);
+    if (!q.explanation && !isCal) return null;
     const d = document.createElement('div'); d.className = 'explain';
-    const b = document.createElement('b'); b.textContent = 'Explanation: ';
-    d.append(b, EXPL[ref]);
+    const b = document.createElement('b');
+    if (isCal && !q.working.length) {
+      b.textContent = 'Handwritten working: ';
+      d.append(b, 'none on the exam paper for this question.');
+    } else if (isCal) {
+      b.textContent = q.basedOn ? `Working (same method as Q${q.basedOn}):` : 'Handwritten working:';
+      const ul = document.createElement('ul'); ul.className = 'working';
+      q.working.forEach(line => { const li = document.createElement('li'); li.append(...withFractions(line)); ul.appendChild(li); });
+      d.append(b, ul);
+    } else {
+      b.textContent = 'Explanation: ';
+      d.append(b, q.explanation);
+    }
     return d;
   }
 
-  function imgEl(ref) {
+  // Turn "a/b" (numbers on both sides, no spaces) into a stacked fraction; " / " with spaces is left as text.
+  function withFractions(line) {
+    const out = [], re = /(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/g;
+    let last = 0, m;
+    while ((m = re.exec(line))) {
+      if (m.index > last) out.push(line.slice(last, m.index));
+      const f = document.createElement('span'); f.className = 'frac';
+      const t = document.createElement('span'), b = document.createElement('span');
+      t.textContent = m[1]; b.textContent = m[2];
+      f.append(t, b); out.push(f);
+      last = re.lastIndex;
+    }
+    if (last < line.length) out.push(line.slice(last));
+    return out;
+  }
+
+  function imgEl(src) {
     const a = document.createElement('a');
-    a.className = 'qimg'; a.href = IMG[ref]; a.target = '_blank'; a.title = 'Open full size';
+    a.className = 'qimg'; a.href = src; a.target = '_blank'; a.title = 'Open full size';
     const im = document.createElement('img');
-    im.src = IMG[ref]; im.alt = 'Figure ' + IMG[ref].replace(/^.*\/|\.\w+$/g, '');
+    im.src = src; im.alt = 'Figure ' + src.replace(/^.*\/|\.\w+$/g, '');
     a.appendChild(im);
     return a;
   }
@@ -463,9 +616,9 @@
       b.className = '';
       if (it.answer) {
         ans++;
-        if (S.mode === 'practice') b.classList.add(it.answer === it.correct ? 'g-ok' : 'g-bad');
-        else b.classList.add('ans');
-        if (it.answer === it.correct) corr++;
+        const ok = isOk(it);
+        b.classList.add(ok ? 'g-ok' : 'g-bad');
+        if (ok) corr++;
       }
       if (it.flag) { flg++; b.classList.add('flag'); }
       if (i === S.idx) b.classList.add('cur');
@@ -478,8 +631,13 @@
 
   function choose(label) {
     const it = S.items[S.idx];
-    if (S.mode === 'practice' && it.answer) return;
+    if (it.answer || it.kind === 'fill') return;
     it.answer = label; save(); render();
+  }
+  function answerFill(text) {
+    const it = S.items[S.idx];
+    if (it.answer) return;
+    it.answer = text; it.ok = fillMatches(text, it.correctText); save(); render();
   }
   function go(i) { if (i < 0 || i >= S.items.length) return; S.idx = i; render(); save(); }
 
@@ -529,7 +687,7 @@
     show($('examView'), false); show($('timer'), false); show($('resultView'));
     $('qCounter').textContent = '—';
     const n = S.items.length;
-    const corr = S.items.filter(i => i.answer === i.correct).length;
+    const corr = S.items.filter(isOk).length;
     const na = S.items.filter(i => !i.answer).length;
     const pct = Math.round(corr / n * 100);
     const pass = pct >= PASS;
@@ -558,42 +716,46 @@
 
   function renderReview() {
     const box = $('review'); box.innerHTML = '';
-    const list = S.items.map((it, i) => ({ it, i })).filter(({ it }) => {
-      const st = !it.answer ? 'na' : it.answer === it.correct ? 'ok' : 'wrong';
-      return filter === 'all' || filter === st || (filter === 'flag' && it.flag);
-    });
+    const status = it => !it.answer ? 'na' : isOk(it) ? 'ok' : 'wrong';
+    const list = S.items.map((it, i) => ({ it, i })).filter(({ it }) =>
+      filter === 'all' || filter === status(it) || (filter === 'flag' && it.flag));
     if (!list.length) { box.innerHTML = '<div class="rv" style="color:var(--muted)">No questions in this category.</div>'; return; }
     list.forEach(({ it, i }) => {
-      const st = !it.answer ? 'na' : it.answer === it.correct ? 'ok' : 'bad';
+      const st = { na: 'na', ok: 'ok', wrong: 'bad' }[status(it)];
+      const q = bankQ(it);
       const d = document.createElement('div'); d.className = 'rv';
-      const q = document.createElement('div'); q.className = 'q';
-      q.innerHTML = `<small>Q${i + 1} · #${it.ref}</small>`;
-      q.append(it.question);
+      const qd = document.createElement('div'); qd.className = 'q';
+      qd.innerHTML = `<small>Q${i + 1} · #${it.ref}</small>`;
+      qd.append(it.question);
       const tag = document.createElement('span');
       tag.className = 'tag ' + st;
       tag.textContent = { ok: 'Correct', bad: 'Incorrect', na: 'Not answered' }[st] + (it.flag ? ' · ⚑' : '');
-      q.appendChild(tag);
+      qd.appendChild(tag);
+      d.append(qd);
+      if (q.image) d.appendChild(imgEl(q.image));
       const ul = document.createElement('ul');
-      it.options.forEach((o, k) => {
-        const li = document.createElement('li');
-        li.textContent = `${'ABCD'[k]}. ${o.text}`;
-        if (o.label === it.correct) li.className = 'c';
-        else if (o.label === it.answer) li.className = 'w';
-        ul.appendChild(li);
-      });
-      d.append(q);
-      if (IMG[it.ref]) d.appendChild(imgEl(it.ref));
+      const li = (text, cls) => { const l = document.createElement('li'); l.textContent = text; if (cls) l.className = cls; ul.appendChild(l); };
+      if (it.kind === 'fill') {
+        if (it.answer && !it.ok) li(`Your answer: ${it.answer}`, 'w');
+        li(`Answer: ${it.correctText}`, 'c');
+      } else {
+        it.options.forEach((o, k) => li(`${'ABCD'[k]}. ${o.text}`,
+          o.label === it.correct ? 'c' : o.label === it.answer ? 'w' : ''));
+      }
       d.append(ul);
-      if (st !== 'ok' && EXPL[it.ref]) d.appendChild(explainEl(it.ref));
+      if (st !== 'ok') { const ex = explainEl(q); if (ex) d.appendChild(ex); }
       box.appendChild(d);
     });
   }
 
-  $('btnNew').onclick = () => { show($('resultView'), false); show($('startView')); checkResume(); };
+  $('btnNew').onclick = () => {
+    show($('resultView'), false); show($('startView'));
+    current = S.bank; refreshTabs(); checkResume();
+  };
   $('btnRetryWrong').onclick = () => {
-    const refs = new Set(S.items.filter(i => i.answer !== i.correct).map(i => i.ref));
-    const pool = BANK.filter(q => refs.has(q.number));
-    start(buildSession(pool, { ...S.opts, count: pool.length }));
+    const refs = new Set(S.items.filter(i => !isOk(i)).map(i => i.ref));
+    const pool = BANKS[S.bank].qs.filter(q => refs.has(q.number));
+    start(buildSession(S.bank, pool, { ...S.opts, count: pool.length }));
   };
 })();
 </script>

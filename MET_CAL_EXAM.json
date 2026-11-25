@@ -1,0 +1,2220 @@
+{
+  "title": "MET CAL EXAM",
+  "source_file": "MET_CAL_EXAM.pdf",
+  "topic": "Altimetry calculations (true altitude, temperature/pressure corrections, flight levels)",
+  "total_questions": 65,
+  "total_marks": 68,
+  "notes": "Transcribed from scanned tablet screenshots. 'selected_answer' is the option highlighted in yellow (or handwritten in the answer box for fill-in questions); it reflects the test-taker's choice, not a verified answer key. 'explanation' transcribes the handwritten calculations; Thai annotations are kept with English translations in brackets.",
+  "questions": [
+    {
+      "number": 1,
+      "question_id": "63470",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft has to fly over a mountain ridge. The highest obstacle, indicated in the navigation chart, has an elevation of 10290 ft. The QNH, given by a meteorological station at an elevation of 5200 ft, is 1013 hPa. The OAT = ISA-20° C. Calculate the approximate indicated altitude, respectively flight level, to obtain a clearance of 2000 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL150"
+        },
+        {
+          "label": "B",
+          "text": "FL120"
+        },
+        {
+          "label": "C",
+          "text": "FL130"
+        },
+        {
+          "label": "D",
+          "text": "FL110"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "FL130"
+      },
+      "explanation": [
+        "Clearance 2000 FT -> 10290 + 2000 = 12290 FT (TRUE ALT)",
+        "AAL = 12290 - 5200 = 7090 FT",
+        "TRUE ALT = INDI ALT + (4/1000 x ISA Dev. x AAL)",
+        "12290 = INDI ALT + (4/1000 x (-20) x 7090)",
+        "12290 + 567.2 = INDI ALT",
+        "∴ INDI ALT = 12857.2 FT / FL130"
+      ]
+    },
+    {
+      "number": 2,
+      "question_id": "78272",
+      "marks": 2,
+      "type": "multiple_choice",
+      "question": "The crew is planning a flight across the Himalayas at FL400, which is above the tropopause. The QNH at the station located at 5000 ft is 1013 hPa. Forecasted temperature at FL400 is -50 °C. What would be the clearance above the peak of 29 029 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "11 881 ft"
+        },
+        {
+          "label": "B",
+          "text": "8 871 ft"
+        },
+        {
+          "label": "C",
+          "text": "11 297 ft"
+        },
+        {
+          "label": "D",
+          "text": "11 127 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "11 881 ft"
+      },
+      "explanation": [
+        "-56.5°C above FL360 ∴ ISA + 6.5°C",
+        "FL400 = INDI ALT @ 1013",
+        "AAL = 40000 - 5000 = 35000",
+        "TRUE ALT = 40000 + (4/1000 x 6.5 x 35000) = 40910 FT",
+        "OBSTACLE CLEARANCE = 40910 - 29029 = 11881 FT"
+      ]
+    },
+    {
+      "number": 3,
+      "question_id": "77129",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft maintains a constant indicated altitude of 6500 ft from A (600 ft AMSL - QNH 1012 hPa) to B (930 ft AMSL - QNH 977 hPa). Assuming that the altimeter subscale setting remains unchanged at 1012 hPa, the height of the aircraft above the surface at B are:\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "5225 ft"
+        },
+        {
+          "label": "B",
+          "text": "6515 ft"
+        },
+        {
+          "label": "C",
+          "text": "4625 ft"
+        },
+        {
+          "label": "D",
+          "text": "5555 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "4625 ft"
+      },
+      "explanation": [
+        "1012 - 977 = 35 hPa",
+        "35 x 27 = 945 FT",
+        "6500 - 945 = 5555 FT",
+        "True height = 5555 - 930 = 4625 FT"
+      ]
+    },
+    {
+      "number": 4,
+      "question_id": "6549",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "A temperature of 10 °C below ISA is observed. What is the vertical distance between FL40 and FL70?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 880 ft"
+        },
+        {
+          "label": "B",
+          "text": "3 000 ft"
+        },
+        {
+          "label": "C",
+          "text": "3 120 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 560 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "2 880 ft"
+      },
+      "explanation": [
+        "FLIGHT LEVEL = INDI ALT -> 7000 - 4000 = 3000 FT",
+        "TRUE ALT = 3000 + 4/1000 x (-10) x 3000 = 2880 FT"
+      ]
+    },
+    {
+      "number": 5,
+      "question_id": "35894",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "The average temperature of an air mass is ISA -12°C. Determine the vertical distance between FL80 and FL50...",
+      "options": [
+        {
+          "label": "A",
+          "text": "3 808 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 850 ft"
+        },
+        {
+          "label": "C",
+          "text": "2 808 ft"
+        },
+        {
+          "label": "D",
+          "text": "3 800 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "2 850 ft"
+      },
+      "explanation": ["FLIGHT LEVEL = INDI ALT -> 8000 - 5000 = 3000 FT",
+        "TRUE ALT = 3000 + 4/1000 x (-12) x 3000 = 2850 FT"]
+    },
+    {
+      "number": 6,
+      "question_id": "83749",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft flying at FL45 (OAT 6 °C) obtains a reading of 1 860 ft on its radio altimeter (ground elevation 3 090 ft). What is the value of the QNH, to the nearest hPa, at that point?\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 042 hPa"
+        },
+        {
+          "label": "B",
+          "text": "1 013 hPa"
+        },
+        {
+          "label": "C",
+          "text": "1 030 hPa"
+        },
+        {
+          "label": "D",
+          "text": "996 hPa"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "1 030 hPa"
+      },
+      "explanation": [
+        "3090 + 1860 = 4950 FT",
+        "4950 - 4500 = 450 FT -> 17 hPa",
+        "∴ QNH = 1013 + 17 = 1030 hPa"
+      ]
+    },
+    {
+      "number": 7,
+      "question_id": "73704",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "What is the approximate true height of the aircraft above the airport considering the following data?\n• OAT: ISA +12 °C\n• Pressure altitude: 2 300 ft\n• Indicated height on the altimeter 2 000 ft using the QFE from the airport, of 1 000 ft elevation set on the subscale.\n• The altimeter experiences no instrument errors.",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 063 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 095 ft"
+        },
+        {
+          "label": "C",
+          "text": "1 808 ft"
+        },
+        {
+          "label": "D",
+          "text": "1 934 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "2 095 ft"
+      },
+      "explanation": [
+        "TRUE H = INDI H + TEMP CORR",
+        "= 2000 + 4/1000 x 12 x 2000",
+        "= 2096 FT"
+      ],
+      "notes": "'true height' and 'Indicated height' highlighted in the question"
+    },
+    {
+      "number": 8,
+      "question_id": "7696",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "After landing at an aerodrome with a QNH of 1 018 hPa, the altimeter remains set to the departure airfield QNH of 1 020 hPa. With an airfield elevation of 320 ft, calculate what the altimeter will read.",
+      "options": [
+        {
+          "label": "A",
+          "text": "320 ft"
+        },
+        {
+          "label": "B",
+          "text": "380 ft"
+        },
+        {
+          "label": "C",
+          "text": "266 ft"
+        },
+        {
+          "label": "D",
+          "text": "260 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "380 ft"
+      },
+      "explanation": [
+        "320 + (2 x 30) = 380 FT"
+      ]
+    },
+    {
+      "number": 9,
+      "question_id": "28695",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "What will the altimeter indicate when the aircraft is on the ground, given an aerodrome elevation of 630 ft and a QNH setting of 982 hPa, with the latest METAR being:\n\n150630 230/06 M20/M22 Q0982?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Less than 630 ft."
+        },
+        {
+          "label": "B",
+          "text": "630 ft."
+        },
+        {
+          "label": "C",
+          "text": "More than 630 ft."
+        },
+        {
+          "label": "D",
+          "text": "0 ft."
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "630 ft."
+      },
+      "explanation": [
+        "QNH set -> on the ground the altimeter reads aerodrome elevation",
+        "(temperature has no effect when on the ground)",
+        "∴ 630 FT"
+      ],
+      "explanation_based_on": 38
+    },
+    {
+      "number": 10,
+      "question_id": "84170",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given that the indicated altitude is 8 000 ft (correct QNH set) and the OAT is +12 °C, what is the true altitude of the aircraft?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8 416 ft"
+        },
+        {
+          "label": "B",
+          "text": "7 584 ft"
+        },
+        {
+          "label": "C",
+          "text": "8 032 ft"
+        },
+        {
+          "label": "D",
+          "text": "7 680 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "8 416 ft"
+      },
+      "explanation": [
+        "15 - (2 x 8) = -1°C / +12°C ∴ ISA + 13°C",
+        "= 8000 + (4/1000 x 13 x 8000)",
+        "= 8416 FT"
+      ]
+    },
+    {
+      "number": 11,
+      "question_id": "43339",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given\nPressure altitude: 4 000 ft\nIndicated altitude: 4 500 ft\nTemperature: ISA+23 °C\n\nWhat is the true altitude?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4 086 ft"
+        },
+        {
+          "label": "B",
+          "text": "3 632 ft"
+        },
+        {
+          "label": "C",
+          "text": "4 914 ft"
+        },
+        {
+          "label": "D",
+          "text": "4 368 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "4 914 ft"
+      },
+      "explanation": [
+        "HIGHER THAN ISA -> TRUE ALT > INDI ALT ∴ more than 4500 FT",
+        "TRUE ALT = INDI ALT + TEMP CORR"
+      ]
+    },
+    {
+      "number": 12,
+      "question_id": "36067",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is cleared by the ATC to descend from FL230 to FL110 and the average temperature for the descent is ISA +15 °C. What is the vertical distance of the descent?",
+      "options": [
+        {
+          "label": "A",
+          "text": "12 720 ft"
+        },
+        {
+          "label": "B",
+          "text": "12 480 ft"
+        },
+        {
+          "label": "C",
+          "text": "11 280 ft"
+        },
+        {
+          "label": "D",
+          "text": "12 000 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "12 720 ft"
+      },
+      "explanation": [
+        "FLIGHT LEVEL = INDI ALT -> 23000 - 11000 = 12000 FT",
+        "TRUE ALT = 12000 + 4/1000 x 15 x 12000 = 12720 FT"
+      ],
+      "explanation_based_on": 4
+    },
+    {
+      "number": 13,
+      "question_id": "49010",
+      "marks": 1,
+      "type": "fill_in",
+      "question": "What is the vertical distance between FL230 and FL120? Temperature equals ISA +15 °C?",
+      "selected_answer": {
+        "text": "11 660 ft"
+      },
+      "explanation": [
+        "FLIGHT LEVEL = INDI ALT -> 23000 - 12000 = 11000 FT",
+        "TRUE ALT = 11000 + 4/1000 x 15 x 11000 = 11660 FT"
+      ],
+      "explanation_based_on": 4,
+      "notes": "Fill-in-the-blank question (answer box in ft); answer handwritten in the box"
+    },
+    {
+      "number": 14,
+      "question_id": "60272",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft maintains a constant indicated altitude of 7 500 ft from A (270 ft AMSL - QNH 1021 hPa) to B (1 650 ft AMSL - QNH 983 hPa). Assuming that the altimeter sub-scale setting remains unchanged at 1021 hPa, the height of the aircraft above the surface at B are:\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 204 ft"
+        },
+        {
+          "label": "B",
+          "text": "6 876 ft"
+        },
+        {
+          "label": "C",
+          "text": "6 474 ft"
+        },
+        {
+          "label": "D",
+          "text": "4 824 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "4 824 ft"
+      },
+      "explanation": [
+        "1021 - 983 = 38 hPa = 1026 FT",
+        "6474 FT at B (ที่ B) / from 7500 - 1026 = 6474 FT",
+        "∴ height = 6474 - 1650 = 4824 FT"
+      ],
+      "notes": "'the height' highlighted in the question; working contains Thai annotations"
+    },
+    {
+      "number": 15,
+      "question_id": "40859",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "You are flying at FL140, from overhead Airfield A to overhead Airfield B. QNH at both airfields is 1 013 hPa and the following information is given:\n• Airfield A:\nElevation: 4 000 ft; OAT: ISA -15 °C\n• Airfield B:\nElevation: 3 000 ft; OAT: ISA +5 °C\n\nCalculate the approximate change in the true altitude whilst flying from Airfield A to Airfield B.",
+      "options": [
+        {
+          "label": "A",
+          "text": "+380 ft"
+        },
+        {
+          "label": "B",
+          "text": "+820 ft"
+        },
+        {
+          "label": "C",
+          "text": "-820 ft"
+        },
+        {
+          "label": "D",
+          "text": "-380 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "+820 ft"
+      },
+      "explanation": [
+        "A: TRUE ALT = 14000 + (4/1000 x (-15) x 10000) = 13400 FT",
+        "B: TRUE ALT = 14000 + (4/1000 x 5 x 11000) = 14220 FT",
+        "∴ +820 FT"
+      ]
+    },
+    {
+      "number": 16,
+      "question_id": "53755",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An altimeter adjusted to 1013 hPa indicates an altitude of 3600 ft. Should this altimeter be adjusted to the local QNH value of 991 hPa, the altitude indicated would be:\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "4278 ft"
+        },
+        {
+          "label": "B",
+          "text": "2922 ft"
+        },
+        {
+          "label": "C",
+          "text": "3006 ft"
+        },
+        {
+          "label": "D",
+          "text": "4194 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "3006 ft"
+      },
+      "explanation": [
+        "1013 - 991 = 22 hPa",
+        "22 x 27 = 594 FT",
+        "Lower setting -> lower reading",
+        "∴ 3600 - 594 = 3006 FT"
+      ],
+      "explanation_based_on": 3
+    },
+    {
+      "number": 17,
+      "question_id": "33933",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "If the QNH at Locarno (elevation of 200 m AMSL) is 1 015 hPa, what is the approximate QFE?\n\nUse 1 hPa = 30 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "983 hPa"
+        },
+        {
+          "label": "B",
+          "text": "1 003 hPa"
+        },
+        {
+          "label": "C",
+          "text": "993 hPa"
+        },
+        {
+          "label": "D",
+          "text": "998 hPa"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "993 hPa"
+      },
+      "explanation": [
+        "1 hPa = 9 m (red annotation next to the question)"
+      ]
+    },
+    {
+      "number": 18,
+      "question_id": "99278",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "What is the approximate reading expected on the altimeter when the pilot changes the subscale setting during a climb through the transition altitude in a region, where the transition altitude is 3 000 ft and QNH is 980 hPa.\n\nUse 27 ft per 1 hPa.",
+      "options": [
+        {
+          "label": "A",
+          "text": "3 620 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 110 ft"
+        },
+        {
+          "label": "C",
+          "text": "3 990 ft"
+        },
+        {
+          "label": "D",
+          "text": "3 890 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "3 890 ft"
+      },
+      "explanation": [
+        "Climbing through TA -> change QNH 980 to 1013",
+        "1013 - 980 = 33 hPa",
+        "33 x 27 = 891 FT",
+        "Higher setting -> higher reading",
+        "∴ 3000 + 891 = 3891 ≈ 3890 FT"
+      ],
+      "explanation_based_on": 3
+    },
+    {
+      "number": 19,
+      "question_id": "57684",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given:\nTransition altitude: 11 000 ft\nTransition level: FL120\nQNH: 1 041 hPa\n(Assume 30 ft per hPa)\n\nAn aircraft passes the transition altitude on a SID out of Dimapur, India. What approximate reading is expected on the altimeter if the pilot changes the subscale setting at the transition altitude?",
+      "options": [
+        {
+          "label": "A",
+          "text": "9 660 ft"
+        },
+        {
+          "label": "B",
+          "text": "10 160 ft"
+        },
+        {
+          "label": "C",
+          "text": "11 340 ft"
+        },
+        {
+          "label": "D",
+          "text": "11 840 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "10 160 ft"
+      },
+      "explanation": [
+        "Climbing through TA -> change QNH 1041 to 1013",
+        "1041 - 1013 = 28 hPa",
+        "28 x 30 = 840 FT",
+        "Lower setting -> lower reading",
+        "∴ 11000 - 840 = 10160 FT"
+      ],
+      "explanation_based_on": 3
+    },
+    {
+      "number": 20,
+      "question_id": "7366",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "At FL370, the OAT is -45 °C. What is the ISA deviation?",
+      "options": [
+        {
+          "label": "A",
+          "text": "+11.5 °C"
+        },
+        {
+          "label": "B",
+          "text": "-11.5 °C"
+        },
+        {
+          "label": "C",
+          "text": "+14 °C"
+        },
+        {
+          "label": "D",
+          "text": "-14 °C"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "+11.5 °C"
+      },
+      "explanation": [
+        "-56.5°C above FL360 (ISA)",
+        "-45 - (-56.5) = +11.5",
+        "∴ ISA + 11.5°C"
+      ],
+      "explanation_based_on": 2
+    },
+    {
+      "number": 21,
+      "question_id": "23764",
+      "marks": 1,
+      "type": "fill_in",
+      "question": "You are flying at FL160. Outside air temperature is -27 °C, and the pressure at sea level is 1 003 hPa. What is the true altitude?\n(Note: assume 1 hPa = 27 ft)",
+      "selected_answer": {
+        "text": "15 090 ft"
+      },
+      "explanation": [
+        "15 - 2(16) = -17°C ∴ ISA -10°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 16000 + [27 x (-10)] + (4/1000 x -10 x 16000)",
+        "= 16000 - 270 - 640",
+        "= 15090"
+      ],
+      "notes": "Fill-in-the-blank question (answer box in ft)"
+    },
+    {
+      "number": 22,
+      "question_id": "86735",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "The crew is planning a flight across the Himalayas at FL390, which is above the tropopause. The QNH at the station located at 5 000 ft is 1 013 hPa. Forecasted temperature at FL390 is -48 °C. What would be the clearance above the peak of 29 029 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "11 297 ft"
+        },
+        {
+          "label": "B",
+          "text": "11 875 ft"
+        },
+        {
+          "label": "C",
+          "text": "11 127 ft"
+        },
+        {
+          "label": "D",
+          "text": "8 871 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "11 297 ft"
+      },
+      "explanation": [
+        "ISA DEV = +8.5°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 39000 + (4/1000 x 8.5 x 39000)",
+        "= 40326 FT",
+        "∴ Clearance = 40326 - 29029 = 11297 FT"
+      ]
+    },
+    {
+      "number": 23,
+      "question_id": "54373",
+      "marks": 2,
+      "type": "multiple_choice",
+      "question": "While flying at FL400, at an outside temperature of -50 °C, you are required to initiate a drift down procedure. The maximum elevation of the highest obstacle is 29 092 ft. At an altitude of 5 000 ft, the QNH is measured as 1 013 hPa. What is the vertical separation between your aircraft and the highest obstacle?",
+      "options": [
+        {
+          "label": "A",
+          "text": "11 125 ft"
+        },
+        {
+          "label": "B",
+          "text": "7 868 ft"
+        },
+        {
+          "label": "C",
+          "text": "11 364 ft"
+        },
+        {
+          "label": "D",
+          "text": "11 818 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "11 818 ft"
+      },
+      "explanation": [
+        "ISA DEV +6.5°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 40000 + (4/1000 x 6.5 x 35000)",
+        "= 40910 FT",
+        "Vertical Separation = 11818 FT"
+      ]
+    },
+    {
+      "number": 24,
+      "question_id": "65950",
+      "marks": 1,
+      "type": "fill_in",
+      "question": "During the preflight checks, both altimeters, primary altimeter and standby altimeter, are set to the local QNH of 1 018 hPa. The elevation of the airfield is 254 ft AMSL. The standby altimeter has just been in maintenance for calibration and indicates an altitude of 173 ft. What is the pressure indication of the standby altimeter when the indicated altitude of this instrument will be set to the airfield elevation?\n(Barometric lapse rate: 27 ft / hPa)",
+      "selected_answer": {
+        "text": "1021 hPa"
+      },
+      "explanation": [
+        "254 - 173 = 81 ft / 3 hPa",
+        "∴ 1018 + 3 = 1021 hPa"
+      ],
+      "notes": "Fill-in-the-blank question (answer box in hPa)"
+    },
+    {
+      "number": 25,
+      "question_id": "35795",
+      "marks": 1,
+      "type": "fill_in",
+      "question": "You are flying at 2 000 ft and you are entering an air mass which is 10 °C colder. Your altitude will be [____] by [____].",
+      "selected_answer": {
+        "text": "lower by 80 ft"
+      },
+      "explanation": [
+        "4/1000 x 2000 x (-10) = -80 ft"
+      ],
+      "notes": "Two drop-down blanks; selections handwritten as 'lower' and '80 ft'"
+    },
+    {
+      "number": 26,
+      "question_id": "59630",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "At FL180, the temperature is -36°C. The tropopause above Vancouver is at FL240. Assuming isothermal conditions in the tropopause and stratosphere, what is the ISA deviation at FL380?",
+      "options": [
+        {
+          "label": "A",
+          "text": "ISA +9 °C"
+        },
+        {
+          "label": "B",
+          "text": "ISA +11 °C"
+        },
+        {
+          "label": "C",
+          "text": "ISA +12.5 °C"
+        },
+        {
+          "label": "D",
+          "text": "ISA +6.5 °C"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "ISA +9 °C"
+      },
+      "explanation": [
+        "FL180 - FL240 = 6000 FT",
+        "ที่ stratosphere อุณหภูมิ [temperature in the stratosphere] -36 - (2x6) = -48°C",
+        "อุณหภูมิปกติ stratosphere [normal (ISA) stratosphere temperature] -56.5°",
+        "∴ ISA + 8.5°C"
+      ]
+    },
+    {
+      "number": 27,
+      "question_id": "57354",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "You are cleared to descend to 4 000 ft. During descent you forget to reset your altimeter to local QNH 1 030 at the Transition Level. You level off at 4 000 ft and maintain that level. What is the difference between you and other traffic at 4 000 ft? I am...\n\nconsider: 27 ft/hPa",
+      "options": [
+        {
+          "label": "A",
+          "text": "510 ft below."
+        },
+        {
+          "label": "B",
+          "text": "429 ft below."
+        },
+        {
+          "label": "C",
+          "text": "429 ft above."
+        },
+        {
+          "label": "D",
+          "text": "459 ft above."
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "459 ft above."
+      },
+      "explanation": [
+        "Still on 1013 instead of QNH 1030",
+        "1030 - 1013 = 17 hPa",
+        "17 x 27 = 459 FT",
+        "Setting lower than QNH -> aircraft higher than indicated",
+        "∴ 459 FT above"
+      ],
+      "explanation_based_on": 3
+    },
+    {
+      "number": 28,
+      "question_id": "60946",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "On a descent to an aerodrome, the crew become distracted and forget to change the altimeter setting back to QNH. The aircraft subsequently lands with standard pressure set on the altimeter. If the destination aerodrome has a QNH of 1035 hPa and an elevation of 1450 ft, what does the altimeter indicate on landing?\n\nAssume 27 ft per 1 hPa.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1450 ft"
+        },
+        {
+          "label": "B",
+          "text": "856 ft"
+        },
+        {
+          "label": "C",
+          "text": "2044 ft"
+        },
+        {
+          "label": "D",
+          "text": "594 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "856 ft"
+      },
+      "explanation": [
+        "1035 - 1013 = 22 hPa",
+        "22 x 27 = 594 FT",
+        "Setting lower than QNH -> reads lower",
+        "∴ 1450 - 594 = 856 FT"
+      ],
+      "explanation_based_on": 8
+    },
+    {
+      "number": 29,
+      "question_id": "42343",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following information, what is the approximate true altitude of the aircraft?\n\nOAT is ISA-10 °C\nPressure altitude: 10000 ft\nIndicated altitude: 9500 ft\n\nThe altimeter has no instrument errors.",
+      "options": [
+        {
+          "label": "A",
+          "text": "9312 ft"
+        },
+        {
+          "label": "B",
+          "text": "10845 ft"
+        },
+        {
+          "label": "C",
+          "text": "9883 ft"
+        },
+        {
+          "label": "D",
+          "text": "9120 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "9120 ft"
+      },
+      "explanation": [
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 9500 + (4/1000 x 9500 x -10)",
+        "= 9120 FT"
+      ]
+    },
+    {
+      "number": 30,
+      "question_id": "94175",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "The QNH of an airport at sea level is 983 hPa and the temperature deviation from ISA is -15 °C below FL100. What is the approximate true altitude of FL100?\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "9 800 ft"
+        },
+        {
+          "label": "B",
+          "text": "11 400 ft"
+        },
+        {
+          "label": "C",
+          "text": "10 200 ft"
+        },
+        {
+          "label": "D",
+          "text": "8 640 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "8 640 ft"
+      },
+      "explanation": [
+        "1013 - 983 = 30",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 10000 - (27 x 30) + (4/1000 x (-15) x 9190)",
+        "= 9190 (983 hPa) + (-551.4)",
+        "= 8638.6",
+        "หรืออีกวิธี [or another method]: 4% ต่อ [per] 10°C, 6% ต่อ [per] 15°C"
+      ]
+    },
+    {
+      "number": 31,
+      "question_id": "24991",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "What is the vertical distance between FL50 and FL140 in an air mass with an average temperature of ISA -15 °C?",
+      "options": [
+        {
+          "label": "A",
+          "text": "9 870 ft"
+        },
+        {
+          "label": "B",
+          "text": "8 460 ft"
+        },
+        {
+          "label": "C",
+          "text": "9 540 ft"
+        },
+        {
+          "label": "D",
+          "text": "9 000 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "8 460 ft"
+      },
+      "explanation": [
+        "FLIGHT LEVEL = INDI ALT -> 14000 - 5000 = 9000 FT",
+        "TRUE ALT = 9000 + 4/1000 x (-15) x 9000 = 8460 FT"
+      ],
+      "explanation_based_on": 4
+    },
+    {
+      "number": 32,
+      "question_id": "23304",
+      "marks": 2,
+      "type": "multiple_choice",
+      "question": "Given:\nPressure altitude: 3 000 ft\nIndicated altitude: 2 500 ft with local QNH of the nearby airport at 500 ft.\nTemperature: ISA +21 °C\n\nWhat is the true altitude?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 168 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 668 ft"
+        },
+        {
+          "label": "C",
+          "text": "3 168 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 800 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "2 668 ft"
+      },
+      "explanation": [
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 2500 + (4/1000 x 21 x [2500 - 500])",
+        "= 2500 + 168",
+        "= 2668 FT"
+      ]
+    },
+    {
+      "number": 33,
+      "question_id": "72723",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is flying at 3000 ft indicated altitude. The outside air temperature is ISA +20 °C and the QNH of 998 hPa set on the altimeter subscale, measured by a nearby airport at sea level. What is the approximate true altitude of the aircraft?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2800 ft"
+        },
+        {
+          "label": "B",
+          "text": "3240 ft"
+        },
+        {
+          "label": "C",
+          "text": "3480 ft"
+        },
+        {
+          "label": "D",
+          "text": "2760 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "3240 ft"
+      },
+      "explanation": [
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 3000 + [4/1000 x 20 x 3000]",
+        "= 3000 + 240",
+        "= 3240 FT"
+      ]
+    },
+    {
+      "number": 34,
+      "question_id": "9719",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "You are flying through a region where the transition altitude is 6000 ft. The ATC reports a QNH of 1042 hPa and a transition level of FL55. If you change the altimeter subscale setting to the QNH when descending through the transition level, what approximate reading can you expect on the altimeter?\n\nUse 1 hPa = 27 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "6780 ft"
+        },
+        {
+          "label": "B",
+          "text": "4720 ft"
+        },
+        {
+          "label": "C",
+          "text": "5220 ft"
+        },
+        {
+          "label": "D",
+          "text": "6280 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "6280 ft"
+      },
+      "explanation": [
+        "Descending through TL -> change 1013 to QNH 1042",
+        "1042 - 1013 = 29 hPa",
+        "29 x 27 = 783 FT",
+        "Higher setting -> higher reading",
+        "∴ 5500 + 783 = 6283 ≈ 6280 FT"
+      ],
+      "explanation_based_on": 3
+    },
+    {
+      "number": 35,
+      "question_id": "10481",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An operator is planning a new route over some high terrain and wishes to establish a minimum flight altitude. The highest terrain under the route is 12500ft above mean sea level. Historical records indicate that the likely lowest temperature is ISA -25°C and the lowest QNH is 980 hPa, as measured at a nearby sea level airfield.\n\nAssuming these conditions, and using 30 ft/hPa for any pressure corrections, what is the lowest usable flight level that would ensure 2000ft vertical clearance from the terrain?\n\n(Use your keyboard to enter the answer to obtain the mark(s) for this question. Use only whole numbers. Do not use spaces or punctuation. Example: 100 or 1 000)",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL180"
+        },
+        {
+          "label": "B",
+          "text": "FL160"
+        },
+        {
+          "label": "C",
+          "text": "FL170"
+        },
+        {
+          "label": "D",
+          "text": "FL130"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "FL170"
+      },
+      "explanation": [
+        "หา [find] INDI ALT",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "12500 + 2000 = INDI ALT + [(980 - 1013)(30)] + [4/1000 x (-25) x 14500]",
+        "14500 = INDI ALT - 990 - 1450",
+        "INDI ALT = 16940 FT ∴ FL170"
+      ]
+    },
+    {
+      "number": 36,
+      "question_id": "25513",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "If the decision altitude is constrained to a minimum of 2 500 ft due to terrain clearance during the missed approach procedure, what will be displayed on the altimeter at the geometric or true decision altitude in an environment that is 20 °C below ISA?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 500 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 700 ft"
+        },
+        {
+          "label": "C",
+          "text": "2 600 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 320 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "2 700 ft"
+      },
+      "explanation": [
+        "ISA -20°C",
+        "TRUE ALTITUDE = 2500 FT -> INDICATED ALTITUDE?",
+        "2500 = INDI ALT + (4/1000 x -20 x 2500)  [= -200]",
+        "INDI ALT = 2700 FT"
+      ],
+      "explanation_based_on": 49
+    },
+    {
+      "number": 37,
+      "question_id": "2934",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is flying over a mountain range with a maximum elevation of 4 920 ft AMSL. Calculate the minimum altitude needed to maintain a terrain clearance of 1 000 ft, given the correct QNH is set on the altimeter and the outside air temperature is ISA -10 °C.",
+      "options": [
+        {
+          "label": "A",
+          "text": "5 920 ft"
+        },
+        {
+          "label": "B",
+          "text": "6 160 ft"
+        },
+        {
+          "label": "C",
+          "text": "6 400 ft"
+        },
+        {
+          "label": "D",
+          "text": "5 680 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "6 160 ft"
+      },
+      "explanation": [
+        "4920 + 1000 = 5920",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "5920 = INDI ALT + (4/1000 x -10 x 5920)  [= -236.8]",
+        "INDI ALT = 6156.8"
+      ]
+    },
+    {
+      "number": 38,
+      "question_id": "31232",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is on an airport with QFE 1015 hPa, and altimeter set to QNH 1010 hPa. What is the altimeter reading on the ground?\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "135 ft"
+        },
+        {
+          "label": "B",
+          "text": "Zero ft"
+        },
+        {
+          "label": "C",
+          "text": "70 ft"
+        },
+        {
+          "label": "D",
+          "text": "Minus 135 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "Minus 135 ft"
+      },
+      "explanation": [
+        "on airport with QFE = 0 ft"
+      ]
+    },
+    {
+      "number": 39,
+      "question_id": "91742",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Below FL200, the average temperature is ISA +5 °C. Determine the vertical distance between FL70 and FL190.",
+      "options": [
+        {
+          "label": "A",
+          "text": "12 480 ft"
+        },
+        {
+          "label": "B",
+          "text": "11 700 ft"
+        },
+        {
+          "label": "C",
+          "text": "12 240 ft"
+        },
+        {
+          "label": "D",
+          "text": "11 520 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "12 240 ft"
+      },
+      "explanation": [
+        "FLIGHT LEVEL = INDI ALT -> 19000 - 7000 = 12000 FT",
+        "TRUE ALT = 12000 + 4/1000 x 5 x 12000 = 12240 FT"
+      ],
+      "explanation_based_on": 4
+    },
+    {
+      "number": 40,
+      "question_id": "50623",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following information, what is the true height of the aircraft above airfield elevation?\n\nPressure altitude: 3 300 ft\nIndicated height: 3 300 ft\nOAT: ISA - 15 °C\n\nAssume no instrument errors. Airfield QFE is set in the altimeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "3 022 ft"
+        },
+        {
+          "label": "B",
+          "text": "3 102 ft"
+        },
+        {
+          "label": "C",
+          "text": "3 490 ft"
+        },
+        {
+          "label": "D",
+          "text": "3 390 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "3 102 ft"
+      },
+      "explanation": [
+        "3300 + [4/1000 x -15 x 3300] = 3102 FT"
+      ]
+    },
+    {
+      "number": 41,
+      "question_id": "51492",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following information, what is the approximate true height of the aircraft above airfield elevation?\n\nPressure altitude: 2 500 ft\nIndicated height: 2 000 ft\nTemperature (OAT): ISA + 20 °C\n\nAssume no instrument errors. Airfield QFE is set in the altimeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 240 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 160 ft"
+        },
+        {
+          "label": "C",
+          "text": "1 840 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 100 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "2 160 ft"
+      },
+      "explanation": [
+        "วิธีคิดเหมือนข้อ N° 50623 [same method as question N° 50623]"
+      ]
+    },
+    {
+      "number": 42,
+      "question_id": "39399",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is planned to fly along a route where the elevation of the highest terrain is 4430 ft. The aircraft needs to clear the terrain by 2000 ft. The QNH, given from an airport with an elevation of 2420 ft, is 994 hPa. The OAT at the airport is +9 °C. What is the lowest usable flight level for this flight?\n\nConsider 1 hPa = 30 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL50"
+        },
+        {
+          "label": "B",
+          "text": "FL70"
+        },
+        {
+          "label": "C",
+          "text": "FL60"
+        },
+        {
+          "label": "D",
+          "text": "FL80"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "FL80"
+      },
+      "explanation": [
+        "4430 + 2000 = 6430",
+        "ISA DEV = 15 - 2(2.5) = 10°C ∴ ISA -1°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "6430 = INDI ALT + [4/1000 x -1 x (6430 - 2420)]  [= -16.04]",
+        "∴ INDI ALT = 6446.04 FT",
+        "1013 - 994 = 19 hPa = 570 ft -> ต้องเพิ่ม [must add] 570 ft",
+        "FLIGHT LEVEL = 6446.04 + 570 = 7016.04 FT",
+        "∴ FL80"
+      ]
+    },
+    {
+      "number": 43,
+      "question_id": "45923",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given:\nAirfield elevation: 270 ft\nCorrect QNH: 998 hPa\n(Assume 30 ft per hPa)\n\nA pilot incorrectly sets the altimeter subscale to 978 hPa during pre-flight setup. Based on the given data, determine the altimeter reading on the ground with this incorrect subscale setting.",
+      "options": [
+        {
+          "label": "A",
+          "text": "-330 ft"
+        },
+        {
+          "label": "B",
+          "text": "270 ft"
+        },
+        {
+          "label": "C",
+          "text": "970 ft"
+        },
+        {
+          "label": "D",
+          "text": "180 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "-330 ft"
+      },
+      "explanation": [
+        "998 - 978 = 20 hPa",
+        "20 x 30 = 600 FT",
+        "Setting lower than QNH -> reads lower",
+        "∴ 270 - 600 = -330 FT"
+      ],
+      "explanation_based_on": 8
+    },
+    {
+      "number": 44,
+      "question_id": "72198",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "After landing at an aerodrome with a QNH of 1 018 hPa, the altimeter remains set to the departure airfield QNH of 1 020 hPa. With an airfield elevation of 420 ft, calculate what the altimeter will read.",
+      "options": [
+        {
+          "label": "A",
+          "text": "317 ft"
+        },
+        {
+          "label": "B",
+          "text": "480 ft"
+        },
+        {
+          "label": "C",
+          "text": "377 ft"
+        },
+        {
+          "label": "D",
+          "text": "263 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "480 ft"
+      },
+      "explanation": [
+        "2 x 27 = 54 ft",
+        "420 + 54 = 474 ≈ 480 ft"
+      ]
+    },
+    {
+      "number": 45,
+      "question_id": "15288",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft intends to fly at 6 500 ft. The QNH, measured from a station at sea level, is 1 003 hPa, and the temperature at 6 500 ft is -9 °C. What is the indicated altitude with QNH set on the altimeter in order to maintain a true altitude of 6 500 ft?",
+      "options": [
+        {
+          "label": "A",
+          "text": "6500 ft"
+        },
+        {
+          "label": "B",
+          "text": "7072 ft"
+        },
+        {
+          "label": "C",
+          "text": "6214 ft"
+        },
+        {
+          "label": "D",
+          "text": "6786 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "6786 ft"
+      },
+      "explanation": [
+        "ISA DEV = 15 - 2(6.5) = 2°C ∴ ISA -11°C",
+        "Height Above Station = 6500",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "6500 = INDI ALT + (4/1000 x -11 x 6500)  [= -286]",
+        "INDI ALT = 6786 FT"
+      ]
+    },
+    {
+      "number": 46,
+      "question_id": "10246",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "The temperature at FL50 is 0 °C and at FL70 it's -4 °C. What is the height difference?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2024 ft"
+        },
+        {
+          "label": "B",
+          "text": "1960 ft"
+        },
+        {
+          "label": "C",
+          "text": "1920 ft"
+        },
+        {
+          "label": "D",
+          "text": "1840 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "1960 ft"
+      },
+      "explanation": [
+        "15 - (2x5) = 5°C",
+        "15 - (2x7) = 1°C",
+        "∴ ISA -5°C",
+        "2000 + (4/1000 x 2000 x -5) = 1960 FT"
+      ]
+    },
+    {
+      "number": 47,
+      "question_id": "91071",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given:\n\nPressure altitude: 2 500 ft\nIndicated altitude: 2 000 ft by QFE of an airfield at 1 000 ft AMSL\n\nDetermine the true altitude:",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 000 ft"
+        },
+        {
+          "label": "B",
+          "text": "3 000 ft"
+        },
+        {
+          "label": "C",
+          "text": "1 500 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 500 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "3 000 ft"
+      },
+      "explanation": [
+        "QFE set -> INDI = height above airfield = 2000 FT",
+        "No temperature deviation given -> no TEMP CORR",
+        "TRUE ALT = 2000 + 1000 (airfield elevation) = 3000 FT"
+      ],
+      "explanation_based_on": 7
+    },
+    {
+      "number": 48,
+      "question_id": "72376",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given:\n\nHighest terrain elevation: 2 852 ft\nHeight of obstacle above highest terrain elevation: 385 ft\n\nMeteorological information from a station close to sea level:\nQNH: 1 038 hPa\nTemperature: +38 °C\n\nWhat is the lowest flight level which is safe to fly, providing at least 1 000 ft clearance from obstacles?\n(Barometric lapse rate: 30 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL45"
+        },
+        {
+          "label": "B",
+          "text": "FL50"
+        },
+        {
+          "label": "C",
+          "text": "FL35"
+        },
+        {
+          "label": "D",
+          "text": "FL40"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "FL35"
+      },
+      "explanation": [
+        "2852 + 385 + 1000 = 4237 FT (TRUE ALT / AMSL)",
+        "TRUE ALT = INDI ALT + PRESS CORR. + TEMP CORR.",
+        "4237 = INDI ALT + [(1038 - 1013)(30)] + (4/1000 x 23 x 4237)  [= 750, 390]",
+        "ISA DEV = 38 - 15 = +23°C",
+        "INDI ALT = 3097 FT",
+        "∴ LOWEST FL35"
+      ]
+    },
+    {
+      "number": 49,
+      "question_id": "43788",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "You are flying an approach to an aerodrome located at sea level with a surface temperature of -5 °C. The approach chart indicates an initial approach altitude of 6 000 ft and states that the approach altitude must be corrected for temperatures below 0 °C. Which is the indicated altitude that must be flown, if you want to fly a true altitude of 6 000 ft?",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 000 ft"
+        },
+        {
+          "label": "B",
+          "text": "6 240 ft"
+        },
+        {
+          "label": "C",
+          "text": "6 480 ft"
+        },
+        {
+          "label": "D",
+          "text": "5 520 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "6 480 ft"
+      },
+      "explanation": [
+        "ISA -20°C",
+        "TRUE ALTITUDE = 6000 FT -> INDICATED ALTITUDE?",
+        "6000 = INDI ALT + (4/1000 x -20 x 6000)  [= -480]",
+        "INDI ALT = 6480 FT"
+      ]
+    },
+    {
+      "number": 50,
+      "question_id": "81708",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "After landing at an aerodrome with a QNH of 1 018 hPa, the altimeter remains set to the departure airfield QNH of 1 020 hPa. With an airfield elevation of 317 ft, calculate what the altimeter will read.",
+      "options": [
+        {
+          "label": "A",
+          "text": "317 ft"
+        },
+        {
+          "label": "B",
+          "text": "377 ft"
+        },
+        {
+          "label": "C",
+          "text": "263 ft"
+        },
+        {
+          "label": "D",
+          "text": "257 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "377 ft"
+      },
+      "explanation": [
+        "317 + (2 x 30) = 377 FT"
+      ],
+      "explanation_based_on": 8
+    },
+    {
+      "number": 51,
+      "question_id": "66343",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is flying at 2 600 ft with altimeter set to 1 000 hPa (QNH of an nearby airfield at 600 ft). The air mass at that airfield is on average 8 °C warmer than standard. What is the true altitude over the field?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 760 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 595 ft"
+        },
+        {
+          "label": "C",
+          "text": "2 664 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 540 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "2 664 ft"
+      },
+      "explanation": [
+        "ISA + 8°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "= 2600 + (4/1000 x 8 x (2600 - 600))  [= 64]",
+        "= 2664 FT"
+      ]
+    },
+    {
+      "number": 52,
+      "question_id": "43366",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following information, what approximate reading can you expect on the altimeter when you change the subscale setting during a climb through the transition altitude?\n\nTransition altitude: 18 000 ft\nTransition level: FL175\nQNH: 1 035 hPa\n\n(Assume 1 hPa = 30 ft)",
+      "options": [
+        {
+          "label": "A",
+          "text": "17 340 ft"
+        },
+        {
+          "label": "B",
+          "text": "17 410 ft"
+        },
+        {
+          "label": "C",
+          "text": "18 590 ft"
+        },
+        {
+          "label": "D",
+          "text": "17 500 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "17 340 ft"
+      },
+      "explanation": [
+        "Climbing through TA -> change QNH 1035 to 1013",
+        "1035 - 1013 = 22 hPa",
+        "22 x 30 = 660 FT",
+        "Lower setting -> lower reading",
+        "∴ 18000 - 660 = 17340 FT"
+      ],
+      "explanation_based_on": 19
+    },
+    {
+      "number": 53,
+      "question_id": "19038",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "What altitude does the altimeter show in the resetting procedure while at the transition level?\n\nTransition Level: FL190\nTransition Altitude: 18 000 ft\nQNH: 989 hPa\n\nConsider: 30 ft/hPa",
+      "options": [
+        {
+          "label": "A",
+          "text": "18 280 ft"
+        },
+        {
+          "label": "B",
+          "text": "20 000 ft"
+        },
+        {
+          "label": "C",
+          "text": "19 720 ft"
+        },
+        {
+          "label": "D",
+          "text": "19 820 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "18 280 ft"
+      },
+      "explanation": [
+        "At TL -> change 1013 to QNH 989",
+        "1013 - 989 = 24 hPa",
+        "24 x 30 = 720 FT",
+        "Lower setting -> lower reading",
+        "∴ 19000 - 720 = 18280 FT"
+      ],
+      "explanation_based_on": 34
+    },
+    {
+      "number": 54,
+      "question_id": "96657",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is planned to fly along a route where the elevation of a mountain range is 4 430 ft. The aircraft needs to clear terrain by 2 000 ft. The QNH, given from an airport with an elevation of 2 420 ft, is 994 hPa and the OAT at the airport is +9 °C. What is the appropriate flight level in order clear the mountain range by the specified clearance?\n\nUse 1 hPa = 27 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL70"
+        },
+        {
+          "label": "B",
+          "text": "FL50"
+        },
+        {
+          "label": "C",
+          "text": "FL75"
+        },
+        {
+          "label": "D",
+          "text": "FL60"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "FL70"
+      },
+      "explanation": [
+        "4430 + 2000 = 6430 FT AMSL / TRUE ALT",
+        "Height Above Station = 6430 - 2420 = 4010 FT",
+        "ISA DEV 15 - (2x2.5) = 10°C ∴ ISA -1°C",
+        "TRUE ALT = INDI ALT + PRESS CORR + TEMP CORR",
+        "6430 = INDI ALT + [(994 - 1013)(27)] + [4/1000 x -1 x 4010]",
+        "6430 = INDI ALT - 513 - 16.04",
+        "INDI ALT = 6959.04",
+        "∴ FL70"
+      ]
+    },
+    {
+      "number": 55,
+      "question_id": "56097",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "On a flight at FL50, using the following data from a nearby airport at an elevation of 1600 feet, what is the approximate minimum terrain separation if the highest terrain is 2320 ft?\n\nQNH: 979 hPa\nTemperature: -10 °C\n\nUse 1 hPa = 30 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1760 ft"
+        },
+        {
+          "label": "B",
+          "text": "1450 ft"
+        },
+        {
+          "label": "C",
+          "text": "2280 ft"
+        },
+        {
+          "label": "D",
+          "text": "1320 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "1450 ft"
+      },
+      "explanation": [
+        "TRUE ALT = INDI ALT + PRESS CORR + TEMP CORR",
+        "= 5000 + [(979 - 1013)(30)] + [4/1000 x -22 x (5000 - 1600)]  [annotated: 1020, -209.44]",
+        "= 5000 - 1020 - 209.44",
+        "= 3770",
+        "ISA DEV 15 - 2(1.6) = 12°C ∴ ISA -22°C",
+        "Min Terrain Separation = 3770 - 2320 = 1450 FT"
+      ],
+      "notes": "A tick mark is drawn next to the highlighted answer"
+    },
+    {
+      "number": 56,
+      "question_id": "86110",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Following an in-flight emergency, an aircraft must re-route to an alternate aerodrome in mountainous terrain. The highest terrain along the route rises to 2 048 ft AMSL (meteorological station), and a terrain clearance margin of 4 000 ft is required. This results in a minimum safe altitude of 6 048 ft AMSL. Given the following information, which minimum Flight Level should the crew choose?\n\nQNH: 995 hPa\nOAT: 9°C",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL50"
+        },
+        {
+          "label": "B",
+          "text": "FL75"
+        },
+        {
+          "label": "C",
+          "text": "FL70"
+        },
+        {
+          "label": "D",
+          "text": "FL60"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "FL70"
+      },
+      "explanation": [
+        "Explanation แปลกๆ [the explanation is strange]"
+      ]
+    },
+    {
+      "number": 57,
+      "question_id": "23670",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "You are flying at an indicated altitude of 2 000 ft and enter an air mass that is 10 °C colder than the standard atmosphere (ISA). What happens to your true altitude?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Increased by 200 ft."
+        },
+        {
+          "label": "B",
+          "text": "Increased by 80 ft."
+        },
+        {
+          "label": "C",
+          "text": "Decreased by 80 ft."
+        },
+        {
+          "label": "D",
+          "text": "Decreased by 200 ft."
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "Decreased by 80 ft."
+      },
+      "explanation": [
+        "4/1000 x 2000 x (-10) = -80 ft",
+        "∴ Decreased by 80 ft"
+      ],
+      "explanation_based_on": 25
+    },
+    {
+      "number": 58,
+      "question_id": "15889",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft is expected to clear terrain by 2 000 ft. The height of a mountain range is 14 200 ft and the local QNH and temperature measured at an airport of elevation 6 500 ft are respectively 1 013 hPa and -23 °C. What altitude should be indicated on the altimeter in order to clear the mountain range by the specified clearance?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 450 ft"
+        },
+        {
+          "label": "B",
+          "text": "16 800 ft"
+        },
+        {
+          "label": "C",
+          "text": "17 200 ft"
+        },
+        {
+          "label": "D",
+          "text": "17 800 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "17 200 ft"
+      },
+      "explanation": [
+        "14200 + 2000 = 16200 FT AMSL / TRUE ALT",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "16200 = INDI ALT + (4/1000 x -25 x (16200 - 6500))  [= -970]",
+        "15 - 2(6.5) = 2°C ∴ ISA DEV -25°C",
+        "INDI ALT = 17170 FT"
+      ]
+    },
+    {
+      "number": 59,
+      "question_id": "51485",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "A flight is planned across Himalayas and the most efficient flight level is FL290. Given the following meteorological conditions, what is the approximate minimum clearance at FL290?\n\nElevation of highest terrain close to the intended route: 25 460 ft\nOutside air temperature (OAT) at FL290: -60 °C\nQNH reported by a nearby station located close to sea level: 982 hPa\n\nConsider: 30 ft/hPa lapse rate",
+      "options": [
+        {
+          "label": "A",
+          "text": "690 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 700 ft"
+        },
+        {
+          "label": "C",
+          "text": "2 230 ft"
+        },
+        {
+          "label": "D",
+          "text": "1 450 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "690 ft"
+      },
+      "explanation": [
+        "ISA DEV = 15 - 2(29) = -43°C -> -60°C ∴ ISA -17°C",
+        "TRUE ALT = INDI ALT + PRESS CORR + TEMP CORR",
+        "= 29000 + [(982 - 1013)(30)] + [4/1000 x -17 x 28070]  [= -930, -1909]",
+        "= 29000 - 930 - 1909",
+        "= 26161 FT",
+        "Min clearance = 26161 - 25460 = 701 ≈ 690 FT"
+      ],
+      "explanation_based_on": 55
+    },
+    {
+      "number": 60,
+      "question_id": "61557",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Flying in an air mass 15°C colder than ISA, with the altimeter set to a nearby aerodrome's QFE at elevation 2 000 ft indicating 4 500 ft and pressure altitude being 5 500 ft, what is the aircraft's true height above the aerodrome?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4 230 ft"
+        },
+        {
+          "label": "B",
+          "text": "5 170 ft"
+        },
+        {
+          "label": "C",
+          "text": "4 770 ft"
+        },
+        {
+          "label": "D",
+          "text": "5 830 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "4 230 ft"
+      },
+      "explanation": [
+        "QFE set -> INDI = height above airfield = 4500 FT",
+        "4500 + [4/1000 x -15 x 4500] = 4230 FT"
+      ],
+      "explanation_based_on": 40
+    },
+    {
+      "number": 61,
+      "question_id": "84421",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following, what is the true altitude?\n\nIndicated altitude: 11 000 ft\nOAT: -22 °C\nQNH comes from a meteorology station at MSL.",
+      "options": [
+        {
+          "label": "A",
+          "text": "12 620 ft"
+        },
+        {
+          "label": "B",
+          "text": "9 600 ft"
+        },
+        {
+          "label": "C",
+          "text": "10 400 ft"
+        },
+        {
+          "label": "D",
+          "text": "11 630 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "10 400 ft"
+      },
+      "explanation": [
+        "15 - (2 x 11) = -7°C / -22°C ∴ ISA - 15°C",
+        "= 11000 + (4/1000 x -15 x 11000)",
+        "= 10340 ≈ 10400 FT"
+      ],
+      "explanation_based_on": 10
+    },
+    {
+      "number": 62,
+      "question_id": "23566",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "Given the following information, what is the true height of the aircraft above airfield elevation?\n\nPressure altitude: 2 500 ft\nIndicated height: 2 000 ft\nOAT: ISA + 18 °C\n\nAssume no instrument errors. Airfield QFE is set in the altimeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 856 ft"
+        },
+        {
+          "label": "B",
+          "text": "2 680 ft"
+        },
+        {
+          "label": "C",
+          "text": "2 320 ft"
+        },
+        {
+          "label": "D",
+          "text": "2 144 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "D",
+        "text": "2 144 ft"
+      },
+      "explanation": [
+        "2000 + [4/1000 x 18 x 2000] = 2144 FT"
+      ],
+      "explanation_based_on": 40
+    },
+    {
+      "number": 63,
+      "question_id": "42037",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "While flying from Manchester to Dublin with the highest obstruction at 3860 ft, and considering the following aerodrome report from a nearby aerodrome at 36 ft AMSL, calculate the lowest safe flight level that provides a 2000 ft terrain separation:\n\nQNH: 972 hPa\nTemperature at the aerodrome: -2 °C\n(Assume 30 ft per 1 hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL50"
+        },
+        {
+          "label": "B",
+          "text": "FL70"
+        },
+        {
+          "label": "C",
+          "text": "FL75"
+        },
+        {
+          "label": "D",
+          "text": "FL60"
+        }
+      ],
+      "selected_answer": {
+        "label": "C",
+        "text": "FL75"
+      },
+      "explanation": [
+        "3860 + 2000 = 5860 FT AMSL / TRUE ALT",
+        "Height Above Station = 5860 - 36 = 5824 FT",
+        "ISA DEV 15 - 0 = 15°C -> -2°C ∴ ISA -17°C",
+        "TRUE ALT = INDI ALT + PRESS CORR + TEMP CORR",
+        "5860 = INDI ALT + [(972 - 1013)(30)] + [4/1000 x -17 x 5824]",
+        "5860 = INDI ALT - 1230 - 396",
+        "INDI ALT = 7486 FT",
+        "∴ FL75"
+      ],
+      "explanation_based_on": 54
+    },
+    {
+      "number": 64,
+      "question_id": "62694",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "An aircraft lands at an airport (airport elevation 540 ft, QNH 993 hPa) with the altimeter set to 1013 hPa. What will it indicate?\n(Barometric lapse rate: 27 ft / hPa)",
+      "options": [
+        {
+          "label": "A",
+          "text": "1080 ft"
+        },
+        {
+          "label": "B",
+          "text": "0 ft"
+        },
+        {
+          "label": "C",
+          "text": "700 ft"
+        },
+        {
+          "label": "D",
+          "text": "380 ft"
+        }
+      ],
+      "selected_answer": {
+        "label": "A",
+        "text": "1080 ft"
+      },
+      "explanation": [
+        "1013 - 993 = 20 hPa",
+        "20 x 27 = 540 FT",
+        "Setting higher than QNH -> reads higher",
+        "∴ 540 + 540 = 1080 FT"
+      ],
+      "explanation_based_on": 8
+    },
+    {
+      "number": 65,
+      "question_id": "15318",
+      "marks": 1,
+      "type": "multiple_choice",
+      "question": "A VFR flight is planned over a mountain ridge where the elevation of the highest obstacle is 6254 ft. The local QNH, given from an airport with an elevation of 3100 ft, is 991 hPa and the outside air temperature is ISA + 24 °C. The aircraft must clear the terrain by 2000 ft. Calculate the lowest usable flight level for this flight.\n\nConsider 1 hPa = 30 ft.",
+      "options": [
+        {
+          "label": "A",
+          "text": "FL75"
+        },
+        {
+          "label": "B",
+          "text": "FL85"
+        },
+        {
+          "label": "C",
+          "text": "FL95"
+        },
+        {
+          "label": "D",
+          "text": "FL70"
+        }
+      ],
+      "selected_answer": {
+        "label": "B",
+        "text": "FL85"
+      },
+      "explanation": [
+        "6254 + 2000 = 8254",
+        "ISA + 24°C",
+        "TRUE ALT = INDI ALT + TEMP CORR",
+        "8254 = INDI ALT + [4/1000 x 24 x (8254 - 3100)]  [= 494.8]",
+        "∴ INDI ALT = 7759.2 FT",
+        "1013 - 991 = 22 hPa = 660 ft -> must add 660 ft",
+        "FLIGHT LEVEL = 7759.2 + 660 = 8419.2 FT",
+        "∴ FL85"
+      ],
+      "explanation_based_on": 42
+    }
+  ]
+}
