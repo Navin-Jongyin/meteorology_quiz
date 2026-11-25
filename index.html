@@ -76,6 +76,9 @@
   .feedback.bad{background:var(--badbg);color:var(--bad);border:1px solid #f3b8b4}
   .explain{margin-top:8px;padding-top:8px;border-top:1px solid #f3b8b4;color:var(--text);line-height:1.5}
   .explain b{color:var(--bad)}
+  .feedback.ok .explain{border-top-color:#b7dfc2}
+  .feedback.ok .explain b{color:var(--ok)}
+  .rv .explain b{color:var(--navy2)}
   .rv .explain{border-top:0;margin:8px 0 0;padding:8px 12px;background:#f5f7fa;border-left:3px solid var(--navy2);font-size:17px}
   .qfoot{display:flex;gap:10px;align-items:center;padding:12px 18px;border-top:1px solid var(--line);background:#f5f7fa}
   .qfoot .spacer{flex:1}
@@ -552,7 +555,7 @@
         const ci = it.options.findIndex(o => o.label === it.correct);
         fb.textContent = `✗ Incorrect. The correct answer is ${'ABCD'[ci]}: ${it.options[ci].text}`;
       }
-      if (!ok) { const ex = explainEl(q); if (ex) fb.appendChild(ex); }
+      const ex = explainEl(q); if (ex) fb.appendChild(ex);
     } else { fb.className = ''; fb.textContent = ''; }
 
     $('qStatus').textContent = it.flag ? '⚑ Flagged for review' : '';
@@ -743,7 +746,7 @@
           o.label === it.correct ? 'c' : o.label === it.answer ? 'w' : ''));
       }
       d.append(ul);
-      if (st !== 'ok') { const ex = explainEl(q); if (ex) d.appendChild(ex); }
+      { const ex = explainEl(q); if (ex) d.appendChild(ex); }
       box.appendChild(d);
     });
   }
